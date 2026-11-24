@@ -3,234 +3,220 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>all.off.uz — Universal Raqamli Platforma</title>
+  <title>all.off.uz — Instagram Uslubidagi Platforma</title>
   <link rel="stylesheet" href="index.css" />
 </head>
 <body>
 
-  <!-- Header -->
-  <header>
-    <div class="container nav">
-      <a href="#" class="logo">all.off.uz</a>
+  <!-- Top Bar -->
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a href="#top" class="logo" id="brandLogo">all.off.uz</a>
 
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#services">Xizmatlar</a></li>
-        <li><a href="#shop">Do‘kon</a></li>
-        <li><a href="#portfolio">Portfolio</a></li>
-        <li><a href="#pricing">Tariflar</a></li>
-        <li><a href="#blog">Blog</a></li>
-        <li><a href="#contact">Aloqa</a></li>
-      </ul>
+      <div class="search-box">
+        <input type="search" id="searchInput" placeholder="Qidiruv: post, mahsulot, xizmat..." />
+      </div>
 
-      <div class="nav-actions">
-        <button class="btn btn-outline" id="themeToggle" title="Rejimni almashtirish">🌙</button>
-        <button class="btn btn-primary" id="cartBtn">Savatcha (<span id="cartCount">0</span>)</button>
-        <button class="btn btn-outline menu-toggle" id="menuToggle" aria-label="Menyu">☰</button>
+      <div class="top-actions">
+        <button class="icon-pill" id="themeToggle" title="Rejimni almashtirish">☀️</button>
+        <button class="icon-pill" id="openCreateModalBtn" title="Yangi post">＋ Post</button>
+        <button class="btn-primary-sm" id="cartBtn">Savatcha (<span id="cartCount">0</span>)</button>
       </div>
     </div>
   </header>
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="container">
-      <span class="badge">all.off.uz — Barchasi bir joyda</span>
-      <h1>Zamonaviy biznes va raqamli yechimlar platformasi</h1>
-      <p>Internet-do‘kon, IT va SMM xizmatlari, portfolio, tayyor tariflar hamda foydali maqolalar — barchasi yagona ekotizimda.</p>
-      <div class="hero-btns">
-        <a href="#shop" class="btn btn-primary">Katalogni ko‘rish</a>
-        <a href="#contact" class="btn btn-outline">Bog‘lanish</a>
-      </div>
-    </div>
-  </section>
+  <!-- Main Layout -->
+  <main class="container layout" id="top">
+    <!-- Left / Main Column -->
+    <section class="main-col">
 
-  <!-- Services -->
-  <section id="services">
-    <div class="container">
-      <div class="section-title">
-        <h2>Xizmatlarimiz</h2>
-        <p>Biznesingizni rivojlantirish uchun barcha yo‘nalishlar</p>
-      </div>
-      <div class="grid">
-        <div class="card">
-          <h3>Veb-sayt yaratish</h3>
-          <p>Tezkor, moslashuvchan (responsive) va zamonaviy dizayndagi saytlar.</p>
-        </div>
-        <div class="card">
-          <h3>SMM va Marketing</h3>
-          <p>Brendingizni ijtimoiy tarmoqlarda rivojlantirish va reklama kampaniyalari.</p>
-        </div>
-        <div class="card">
-          <h3>Telegram Botlar</h3>
-          <p>Savdo, buyurtma va avtomatlashtirish uchun maxsus botlar.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Shop -->
-  <section id="shop">
-    <div class="container">
-      <div class="section-title">
-        <h2>Mahsulotlar va Xizmatlar Katalogi</h2>
-        <p>Kerakli mahsulotni tanlang va savatchaga qo‘shing</p>
+      <!-- View Switcher Tabs -->
+      <div class="view-tabs">
+        <button class="view-tab active" data-view="feed">🏠 Lenta</button>
+        <button class="view-tab" data-view="explore">🧭 Explore</button>
+        <button class="view-tab" data-view="saved">🔖 Saqlangan (<span id="savedBadge">0</span>)</button>
+        <button class="view-tab" data-view="profile">👤 Profil</button>
       </div>
 
-      <div class="filters">
-        <button class="btn btn-outline filter-btn active" data-filter="all">Barchasi</button>
-        <button class="btn btn-outline filter-btn" data-filter="tech">Texnika</button>
-        <button class="btn btn-outline filter-btn" data-filter="digital">Raqamli</button>
+      <!-- FEED VIEW -->
+      <div id="feedView">
+        <!-- Stories Bar -->
+        <div class="stories-card" id="storiesBar"></div>
+
+        <!-- Category Chips -->
+        <div class="chips" id="categoryChips">
+          <button class="chip active" data-cat="all">Barchasi</button>
+          <button class="chip" data-cat="shop">Do‘kon</button>
+          <button class="chip" data-cat="services">Xizmatlar</button>
+          <button class="chip" data-cat="portfolio">Portfolio</button>
+          <button class="chip" data-cat="blog">Blog</button>
+        </div>
+
+        <!-- Inline Composer -->
+        <form class="composer-card" id="inlineComposer">
+          <div class="composer-top">
+            <div class="avatar">AO</div>
+            <input type="text" id="quickTitle" placeholder="Nima yangilik? Post sarlavhasini yozing..." required />
+            <button type="submit" class="btn-primary-sm">Joyla</button>
+          </div>
+          <div class="composer-sub">
+            <select id="quickCat">
+              <option value="blog">Blog</option>
+              <option value="shop">Do‘kon</option>
+              <option value="services">Xizmatlar</option>
+              <option value="portfolio">Portfolio</option>
+            </select>
+            <input type="text" id="quickCaption" placeholder="Qisqacha matn..." required />
+            <input type="number" id="quickPrice" placeholder="Narx (ixtiyoriy)" min="0" step="1000" />
+          </div>
+        </form>
+
+        <!-- Posts Stream -->
+        <div class="feed-list" id="feedList"></div>
       </div>
 
-      <div class="grid" id="productGrid">
-        <div class="card product" data-category="tech">
-          <h3>Simsiz Quloqchin Pro</h3>
-          <p>Shovqinni pasaytiruvchi zamonaviy quloqchin.</p>
-          <div class="price">450 000 so‘m</div>
-          <button class="btn btn-primary add-to-cart" data-name="Simsiz Quloqchin Pro" data-price="450000">Savatchaga</button>
-        </div>
-        <div class="card product" data-category="digital">
-          <h3>Landing Page Shablon</h3>
-          <p>Tayyor zamonaviy HTML/CSS sayt maketi.</p>
-          <div class="price">250 000 so‘m</div>
-          <button class="btn btn-primary add-to-cart" data-name="Landing Page Shablon" data-price="250000">Savatchaga</button>
-        </div>
-        <div class="card product" data-category="tech">
-          <h3>Smart Soat X5</h3>
-          <p>Sog‘liq va sport nazorati uchun aqlli soat.</p>
-          <div class="price">600 000 so‘m</div>
-          <button class="btn btn-primary add-to-cart" data-name="Smart Soat X5" data-price="600000">Savatchaga</button>
-        </div>
+      <!-- EXPLORE VIEW -->
+      <div id="exploreView" class="hidden">
+        <div class="explore-grid" id="exploreGrid"></div>
       </div>
-    </div>
-  </section>
 
-  <!-- Portfolio -->
-  <section id="portfolio">
-    <div class="container">
-      <div class="section-title">
-        <h2>Portfolio</h2>
-        <p>Amalga oshirilgan eng sara loyihalar</p>
+      <!-- SAVED VIEW -->
+      <div id="savedView" class="hidden">
+        <div class="feed-list" id="savedList"></div>
       </div>
-      <div class="grid">
-        <div class="card">
-          <h3>E-Commerce Platforma</h3>
-          <p>To‘liq avtomatlashtirilgan onlayn do‘kon va to‘lov tizimi.</p>
-        </div>
-        <div class="card">
-          <h3>Korporativ Portal</h3>
-          <p>Kompaniya ichki boshqaruvi va mijozlar uchun kabinet.</p>
-        </div>
-        <div class="card">
-          <h3>Brending va Dizayn</h3>
-          <p>Logotip, ranglar palitrasi va ijtimoiy tarmoqlar dizayni.</p>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Pricing -->
-  <section id="pricing">
-    <div class="container">
-      <div class="section-title">
-        <h2>Tariflar</h2>
-        <p>O‘zingizga mos paketni tanlang</p>
+      <!-- PROFILE VIEW -->
+      <div id="profileView" class="hidden">
+        <div class="profile-banner-card">
+          <div class="profile-banner-top">
+            <div class="avatar avatar-xl">AO</div>
+            <div class="profile-banner-info">
+              <div class="profile-title-row">
+                <h2 id="profileNameDisplay">all.off.uz</h2>
+                <button class="btn-ghost-sm" id="editBioBtn">Bio tahrirlash</button>
+              </div>
+              <p class="handle">@all.off.uz</p>
+              <div class="profile-metrics">
+                <span><strong id="pPosts">0</strong> post</span>
+                <span><strong id="pLikes">0</strong> layk</span>
+                <span><strong id="pSaved">0</strong> saqlangan</span>
+              </div>
+              <p class="profile-bio-text" id="profileBioDisplay">
+                Zamonaviy biznes, do‘kon, IT/SMM xizmatlari, portfolio va foydali maqolalar markazi.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="explore-grid" id="profilePostsGrid"></div>
       </div>
-      <div class="grid">
-        <div class="card pricing-card">
-          <h3>Start</h3>
-          <div class="price">500 000 so‘m</div>
-          <ul class="pricing-list">
-            <li>✓ 1 sahifali Landing Page</li>
-            <li>✓ Mobil moslashuv</li>
-            <li>✓ 1 oy texnik yordam</li>
-          </ul>
-          <button class="btn btn-outline select-plan" data-plan="Start (500 000 so‘m)">Tanlash</button>
-        </div>
-        <div class="card pricing-card featured">
-          <h3>Biznes</h3>
-          <div class="price">1 500 000 so‘m</div>
-          <ul class="pricing-list">
-            <li>✓ Ko‘p sahifali sayt + Do‘kon</li>
-            <li>✓ Telegram bot integratsiyasi</li>
-            <li>✓ 3 oy texnik yordam</li>
-          </ul>
-          <button class="btn btn-primary select-plan" data-plan="Biznes (1 500 000 so‘m)">Tanlash</button>
-        </div>
-        <div class="card pricing-card">
-          <h3>Premium</h3>
-          <div class="price">3 000 000 so‘m</div>
-          <ul class="pricing-list">
-            <li>✓ Individual dizayn va tizim</li>
-            <li>✓ To‘liq SEO va SMM sozlamalari</li>
-            <li>✓ 1 yil texnik yordam</li>
-          </ul>
-          <button class="btn btn-outline select-plan" data-plan="Premium (3 000 000 so‘m)">Tanlash</button>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Blog -->
-  <section id="blog">
-    <div class="container">
-      <div class="section-title">
-        <h2>Blog</h2>
-        <p>So‘nggi yangiliklar va foydali maqolalar</p>
-      </div>
-      <div class="grid">
-        <div class="card">
-          <h3>2026-yilda veb-dizayn trendlari</h3>
-          <p>Minimalizm, qorong‘i rejim va tezkor interfeyslar haqida.</p>
-        </div>
-        <div class="card">
-          <h3>Onlayn savdoni oshirish usullari</h3>
-          <p>Mijozlar ishonchini qozonish va konversiyani ko‘tarish.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Contact -->
-  <section id="contact">
-    <div class="container">
-      <div class="section-title">
-        <h2>Aloqa</h2>
-        <p>Savolingiz bormi? Bizga xabar yuboring</p>
+    <!-- Right Sidebar -->
+    <aside class="sidebar">
+      <div class="side-card">
+        <h3>Tariflar</h3>
+        <div class="mini-plan">
+          <div>
+            <strong>Start</strong>
+            <p>500 000 so‘m • 1 sahifa</p>
+          </div>
+          <button class="btn-ghost-sm plan-btn" data-plan="Start (500 000 so‘m)">Tanlash</button>
+        </div>
+        <div class="mini-plan">
+          <div>
+            <strong>Biznes</strong>
+            <p>1 500 000 so‘m • Do‘kon + Bot</p>
+          </div>
+          <button class="btn-primary-sm plan-btn" data-plan="Biznes (1 500 000 so‘m)">Tanlash</button>
+        </div>
+        <div class="mini-plan">
+          <div>
+            <strong>Premium</strong>
+            <p>3 000 000 so‘m • To‘liq tizim</p>
+          </div>
+          <button class="btn-ghost-sm plan-btn" data-plan="Premium (3 000 000 so‘m)">Tanlash</button>
+        </div>
       </div>
-      <form class="contact-form" id="contactForm">
-        <input type="text" id="nameInput" placeholder="Ismingiz" required />
-        <input type="tel" id="phoneInput" placeholder="Telefon raqamingiz (+998...)" required />
-        <textarea id="messageInput" rows="4" placeholder="Xabaringizni yozing..." required></textarea>
-        <button type="submit" class="btn btn-primary">Yuborish</button>
-        <p class="form-status" id="formStatus"></p>
+
+      <div class="side-card">
+        <h3>Tezkor Aloqa</h3>
+        <form class="side-form" id="quickContactForm">
+          <input type="text" id="qName" placeholder="Ismingiz" required />
+          <input type="tel" id="qPhone" placeholder="+998 90 123 45 67" required />
+          <textarea id="qMsg" rows="2" placeholder="Xabar yoki tarif..." required></textarea>
+          <button type="submit" class="btn-primary-sm full-w">Yuborish</button>
+          <p class="status-msg" id="qStatus"></p>
+        </form>
+      </div>
+    </aside>
+  </main>
+
+  <!-- Bottom Mobile Nav -->
+  <nav class="bottom-nav">
+    <button class="bnav-btn active" data-view="feed">🏠<span>Lenta</span></button>
+    <button class="bnav-btn" data-view="explore">🧭<span>Explore</span></button>
+    <button class="bnav-btn" id="mobCreateBtn">＋<span>Post</span></button>
+    <button class="bnav-btn" data-view="saved">🔖<span>Saqlangan</span></button>
+    <button class="bnav-btn" data-view="profile">👤<span>Profil</span></button>
+  </nav>
+
+  <!-- Create Post Modal (with Image URL) -->
+  <div class="modal" id="createModal">
+    <div class="modal-box">
+      <div class="modal-top">
+        <h3>Yangi Post Yaratish</h3>
+        <button class="x-btn" id="closeCreate">✕</button>
+      </div>
+      <form class="side-form" id="modalPostForm">
+        <input type="text" id="mTitle" placeholder="Post sarlavhasi" required />
+        <textarea id="mCaption" rows="3" placeholder="Post tavsifi..." required></textarea>
+        <div class="two-col">
+          <select id="mCategory">
+            <option value="shop">Do‘kon</option>
+            <option value="services">Xizmatlar</option>
+            <option value="portfolio">Portfolio</option>
+            <option value="blog">Blog</option>
+          </select>
+          <input type="number" id="mPrice" placeholder="Narx (so‘m)" min="0" step="1000" />
+        </div>
+        <input type="url" id="mImage" placeholder="Rasm havolasi (https://... ixtiyoriy)" />
+        <button type="submit" class="btn-primary-sm full-w">Lentaga joylash</button>
       </form>
     </div>
-  </section>
+  </div>
 
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <p>© 2026 all.off.uz — Barcha huquqlar himoyalangan.</p>
+  <!-- Story Modal -->
+  <div class="modal" id="storyModal">
+    <div class="modal-box">
+      <div class="modal-top">
+        <strong id="storyModalTitle">Story</strong>
+        <button class="x-btn" id="closeStory">✕</button>
+      </div>
+      <div class="story-visual" id="storyVisual"></div>
+      <p id="storyModalText"></p>
     </div>
-  </footer>
+  </div>
 
   <!-- Cart Modal -->
   <div class="modal" id="cartModal">
-    <div class="modal-content">
-      <div class="modal-header">
+    <div class="modal-box">
+      <div class="modal-top">
         <h3>Savatcha</h3>
-        <button class="icon-btn" id="closeCart" aria-label="Yopish">✕</button>
+        <button class="x-btn" id="closeCart">✕</button>
       </div>
       <div id="cartItems"></div>
-      <p class="cart-total">Jami: <span id="cartTotal">0</span> so‘m</p>
-      <div class="modal-actions">
-        <button class="btn btn-outline" id="clearCartBtn">Tozalash</button>
-        <button class="btn btn-primary" id="checkoutBtn">Buyurtma berish</button>
+      <div class="cart-footer-row">
+        <span>Jami:</span>
+        <strong id="cartTotal">0 so‘m</strong>
+      </div>
+      <div class="modal-btns">
+        <button class="btn-ghost-sm" id="clearCartBtn">Tozalash</button>
+        <button class="btn-primary-sm" id="checkoutBtn">Buyurtma berish</button>
       </div>
     </div>
   </div>
 
-  <!-- Toast Notification -->
   <div class="toast" id="toast"></div>
 
   <script src="script.js"></script>
