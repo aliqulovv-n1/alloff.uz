@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="uz" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>all.off.uz — Universal Raqamli Platforma</title>
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container nav">
+      <a href="#" class="logo">all.off.uz</a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#services">Xizmatlar</a></li>
+        <li><a href="#shop">Do‘kon</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#pricing">Tariflar</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#contact">Aloqa</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="btn btn-outline" id="themeToggle" title="Rejimni almashtirish">🌙</button>
+        <button class="btn btn-primary" id="cartBtn">Savatcha (<span id="cartCount">0</span>)</button>
+        <button class="btn btn-outline menu-toggle" id="menuToggle" aria-label="Menyu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <span class="badge">all.off.uz — Barchasi bir joyda</span>
+      <h1>Zamonaviy biznes va raqamli yechimlar platformasi</h1>
+      <p>Internet-do‘kon, IT va SMM xizmatlari, portfolio, tayyor tariflar hamda foydali maqolalar — barchasi yagona ekotizimda.</p>
+      <div class="hero-btns">
+        <a href="#shop" class="btn btn-primary">Katalogni ko‘rish</a>
+        <a href="#contact" class="btn btn-outline">Bog‘lanish</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services">
+    <div class="container">
+      <div class="section-title">
+        <h2>Xizmatlarimiz</h2>
+        <p>Biznesingizni rivojlantirish uchun barcha yo‘nalishlar</p>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <h3>Veb-sayt yaratish</h3>
+          <p>Tezkor, moslashuvchan (responsive) va zamonaviy dizayndagi saytlar.</p>
+        </div>
+        <div class="card">
+          <h3>SMM va Marketing</h3>
+          <p>Brendingizni ijtimoiy tarmoqlarda rivojlantirish va reklama kampaniyalari.</p>
+        </div>
+        <div class="card">
+          <h3>Telegram Botlar</h3>
+          <p>Savdo, buyurtma va avtomatlashtirish uchun maxsus botlar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Shop -->
+  <section id="shop">
+    <div class="container">
+      <div class="section-title">
+        <h2>Mahsulotlar va Xizmatlar Katalogi</h2>
+        <p>Kerakli mahsulotni tanlang va savatchaga qo‘shing</p>
+      </div>
+
+      <div class="filters">
+        <button class="btn btn-outline filter-btn active" data-filter="all">Barchasi</button>
+        <button class="btn btn-outline filter-btn" data-filter="tech">Texnika</button>
+        <button class="btn btn-outline filter-btn" data-filter="digital">Raqamli</button>
+      </div>
+
+      <div class="grid" id="productGrid">
+        <div class="card product" data-category="tech">
+          <h3>Simsiz Quloqchin Pro</h3>
+          <p>Shovqinni pasaytiruvchi zamonaviy quloqchin.</p>
+          <div class="price">450 000 so‘m</div>
+          <button class="btn btn-primary add-to-cart" data-name="Simsiz Quloqchin Pro" data-price="450000">Savatchaga</button>
+        </div>
+        <div class="card product" data-category="digital">
+          <h3>Landing Page Shablon</h3>
+          <p>Tayyor zamonaviy HTML/CSS sayt maketi.</p>
+          <div class="price">250 000 so‘m</div>
+          <button class="btn btn-primary add-to-cart" data-name="Landing Page Shablon" data-price="250000">Savatchaga</button>
+        </div>
+        <div class="card product" data-category="tech">
+          <h3>Smart Soat X5</h3>
+          <p>Sog‘liq va sport nazorati uchun aqlli soat.</p>
+          <div class="price">600 000 so‘m</div>
+          <button class="btn btn-primary add-to-cart" data-name="Smart Soat X5" data-price="600000">Savatchaga</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio -->
+  <section id="portfolio">
+    <div class="container">
+      <div class="section-title">
+        <h2>Portfolio</h2>
+        <p>Amalga oshirilgan eng sara loyihalar</p>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <h3>E-Commerce Platforma</h3>
+          <p>To‘liq avtomatlashtirilgan onlayn do‘kon va to‘lov tizimi.</p>
+        </div>
+        <div class="card">
+          <h3>Korporativ Portal</h3>
+          <p>Kompaniya ichki boshqaruvi va mijozlar uchun kabinet.</p>
+        </div>
+        <div class="card">
+          <h3>Brending va Dizayn</h3>
+          <p>Logotip, ranglar palitrasi va ijtimoiy tarmoqlar dizayni.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing">
+    <div class="container">
+      <div class="section-title">
+        <h2>Tariflar</h2>
+        <p>O‘zingizga mos paketni tanlang</p>
+      </div>
+      <div class="grid">
+        <div class="card pricing-card">
+          <h3>Start</h3>
+          <div class="price">500 000 so‘m</div>
+          <ul class="pricing-list">
+            <li>✓ 1 sahifali Landing Page</li>
+            <li>✓ Mobil moslashuv</li>
+            <li>✓ 1 oy texnik yordam</li>
+          </ul>
+          <button class="btn btn-outline select-plan" data-plan="Start (500 000 so‘m)">Tanlash</button>
+        </div>
+        <div class="card pricing-card featured">
+          <h3>Biznes</h3>
+          <div class="price">1 500 000 so‘m</div>
+          <ul class="pricing-list">
+            <li>✓ Ko‘p sahifali sayt + Do‘kon</li>
+            <li>✓ Telegram bot integratsiyasi</li>
+            <li>✓ 3 oy texnik yordam</li>
+          </ul>
+          <button class="btn btn-primary select-plan" data-plan="Biznes (1 500 000 so‘m)">Tanlash</button>
+        </div>
+        <div class="card pricing-card">
+          <h3>Premium</h3>
+          <div class="price">3 000 000 so‘m</div>
+          <ul class="pricing-list">
+            <li>✓ Individual dizayn va tizim</li>
+            <li>✓ To‘liq SEO va SMM sozlamalari</li>
+            <li>✓ 1 yil texnik yordam</li>
+          </ul>
+          <button class="btn btn-outline select-plan" data-plan="Premium (3 000 000 so‘m)">Tanlash</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog -->
+  <section id="blog">
+    <div class="container">
+      <div class="section-title">
+        <h2>Blog</h2>
+        <p>So‘nggi yangiliklar va foydali maqolalar</p>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <h3>2026-yilda veb-dizayn trendlari</h3>
+          <p>Minimalizm, qorong‘i rejim va tezkor interfeyslar haqida.</p>
+        </div>
+        <div class="card">
+          <h3>Onlayn savdoni oshirish usullari</h3>
+          <p>Mijozlar ishonchini qozonish va konversiyani ko‘tarish.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-title">
+        <h2>Aloqa</h2>
+        <p>Savolingiz bormi? Bizga xabar yuboring</p>
+      </div>
+      <form class="contact-form" id="contactForm">
+        <input type="text" id="nameInput" placeholder="Ismingiz" required />
+        <input type="tel" id="phoneInput" placeholder="Telefon raqamingiz (+998...)" required />
+        <textarea id="messageInput" rows="4" placeholder="Xabaringizni yozing..." required></textarea>
+        <button type="submit" class="btn btn-primary">Yuborish</button>
+        <p class="form-status" id="formStatus"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>© 2026 all.off.uz — Barcha huquqlar himoyalangan.</p>
+    </div>
+  </footer>
+
+  <!-- Cart Modal -->
+  <div class="modal" id="cartModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Savatcha</h3>
+        <button class="icon-btn" id="closeCart" aria-label="Yopish">✕</button>
+      </div>
+      <div id="cartItems"></div>
+      <p class="cart-total">Jami: <span id="cartTotal">0</span> so‘m</p>
+      <div class="modal-actions">
+        <button class="btn btn-outline" id="clearCartBtn">Tozalash</button>
+        <button class="btn btn-primary" id="checkoutBtn">Buyurtma berish</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
