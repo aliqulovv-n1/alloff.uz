@@ -19,6 +19,7 @@
 
       <div class="top-actions">
         <button class="icon-pill" id="themeToggle" title="Rejimni almashtirish">☀️</button>
+        <button class="icon-pill" id="dmBtn" title="Xabarlar">✉️ <span id="msgCount">2</span></button>
         <button class="icon-pill" id="openCreateModalBtn" title="Yangi post">＋ Post</button>
         <button class="btn-primary-sm" id="cartBtn">Savatcha (<span id="cartCount">0</span>)</button>
       </div>
@@ -33,6 +34,7 @@
       <!-- View Switcher Tabs -->
       <div class="view-tabs">
         <button class="view-tab active" data-view="feed">🏠 Lenta</button>
+        <button class="view-tab" data-view="reels">🎬 Reels</button>
         <button class="view-tab" data-view="explore">🧭 Explore</button>
         <button class="view-tab" data-view="saved">🔖 Saqlangan (<span id="savedBadge">0</span>)</button>
         <button class="view-tab" data-view="profile">👤 Profil</button>
@@ -75,6 +77,11 @@
         <div class="feed-list" id="feedList"></div>
       </div>
 
+      <!-- REELS VIEW -->
+      <div id="reelsView" class="hidden">
+        <div class="reels-stack" id="reelsStack"></div>
+      </div>
+
       <!-- EXPLORE VIEW -->
       <div id="exploreView" class="hidden">
         <div class="explore-grid" id="exploreGrid"></div>
@@ -93,13 +100,14 @@
             <div class="profile-banner-info">
               <div class="profile-title-row">
                 <h2 id="profileNameDisplay">all.off.uz</h2>
+                <button class="btn-primary-sm" id="followBtn">Obuna bo‘lish</button>
                 <button class="btn-ghost-sm" id="editBioBtn">Bio tahrirlash</button>
               </div>
               <p class="handle">@all.off.uz</p>
               <div class="profile-metrics">
                 <span><strong id="pPosts">0</strong> post</span>
+                <span><strong id="pFollowers">1 280</strong> obunachi</span>
                 <span><strong id="pLikes">0</strong> layk</span>
-                <span><strong id="pSaved">0</strong> saqlangan</span>
               </div>
               <p class="profile-bio-text" id="profileBioDisplay">
                 Zamonaviy biznes, do‘kon, IT/SMM xizmatlari, portfolio va foydali maqolalar markazi.
@@ -155,20 +163,21 @@
   <!-- Bottom Mobile Nav -->
   <nav class="bottom-nav">
     <button class="bnav-btn active" data-view="feed">🏠<span>Lenta</span></button>
-    <button class="bnav-btn" data-view="explore">🧭<span>Explore</span></button>
+    <button class="bnav-btn" data-view="reels">🎬<span>Reels</span></button>
     <button class="bnav-btn" id="mobCreateBtn">＋<span>Post</span></button>
-    <button class="bnav-btn" data-view="saved">🔖<span>Saqlangan</span></button>
+    <button class="bnav-btn" data-view="explore">🧭<span>Explore</span></button>
     <button class="bnav-btn" data-view="profile">👤<span>Profil</span></button>
   </nav>
 
-  <!-- Create Post Modal (with Image URL) -->
+  <!-- Create / Edit Post Modal -->
   <div class="modal" id="createModal">
     <div class="modal-box">
       <div class="modal-top">
-        <h3>Yangi Post Yaratish</h3>
+        <h3 id="modalFormTitle">Yangi Post Yaratish</h3>
         <button class="x-btn" id="closeCreate">✕</button>
       </div>
       <form class="side-form" id="modalPostForm">
+        <input type="hidden" id="editPostId" />
         <input type="text" id="mTitle" placeholder="Post sarlavhasi" required />
         <textarea id="mCaption" rows="3" placeholder="Post tavsifi..." required></textarea>
         <div class="two-col">
@@ -181,20 +190,40 @@
           <input type="number" id="mPrice" placeholder="Narx (so‘m)" min="0" step="1000" />
         </div>
         <input type="url" id="mImage" placeholder="Rasm havolasi (https://... ixtiyoriy)" />
-        <button type="submit" class="btn-primary-sm full-w">Lentaga joylash</button>
+        <button type="submit" class="btn-primary-sm full-w" id="modalSubmitBtn">Lentaga joylash</button>
       </form>
     </div>
   </div>
 
-  <!-- Story Modal -->
+  <!-- Story Viewer Modal -->
   <div class="modal" id="storyModal">
     <div class="modal-box">
+      <div class="story-progress-bars" id="storyProgressBars"></div>
       <div class="modal-top">
         <strong id="storyModalTitle">Story</strong>
         <button class="x-btn" id="closeStory">✕</button>
       </div>
       <div class="story-visual" id="storyVisual"></div>
-      <p id="storyModalText"></p>
+      <p id="storyModalText" style="margin-bottom: 14px;"></p>
+      <div class="modal-btns">
+        <button class="btn-ghost-sm" id="prevStoryBtn">← Oldingi</button>
+        <button class="btn-primary-sm" id="nextStoryBtn">Keyingi →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Direct Messages Modal -->
+  <div class="modal" id="dmModal">
+    <div class="modal-box">
+      <div class="modal-top">
+        <h3>Xabarlar (@all.off.uz)</h3>
+        <button class="x-btn" id="closeDm">✕</button>
+      </div>
+      <div class="dm-list" id="dmList"></div>
+      <form class="comment-form" id="dmForm">
+        <input type="text" id="dmInput" placeholder="Xabar yozing..." required />
+        <button type="submit" class="btn-primary-sm">Yuborish</button>
+      </form>
     </div>
   </div>
 
